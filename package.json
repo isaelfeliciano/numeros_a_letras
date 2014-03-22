@@ -11,5 +11,9 @@
     "app"
   ],
   "author": "Isael Feliciano",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mime": "^1.2.11",
+    "nodemon": "^1.0.17"
+  }
 }
