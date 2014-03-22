@@ -48,6 +48,7 @@ var http = require('http'),
 		serveStatic(response, cache, absPath);
 	});
 
-	server.listen(8080, function (){
-		console.log('Server listening on port 8080.');
+	var port = Number(process.env.PORT || 5000)
+	server.listen(port, function (){
+		console.log('Server listening on port '+port);
 	});
