@@ -6,12 +6,13 @@
 	<link type="text/css" rel="stylesheet" href="estilo/darktooltip.css">
 	<script tyle="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/tooltip.js"></script>
-	<script type="text/javascript" src="leer_numeros.js"></script>
 	<script type="text/javascript" src="js/elscript.js"></script>
+	<script type="text/javascript" src="socket.io/lib/socket.io.js"></script>
 	<script type="text/javascript">
 	$(document).on("ready", function(){
 		$('input[name="entrada_numero"]').tooltip({ position: 'center right'});
 		$('textarea').tooltip({position:"center right"});
+		var socket = io.connect('http://localhost');
 	});	
 	</script>
 	<title>Leer números</title>
