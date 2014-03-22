@@ -48,6 +48,6 @@ var http = require('http'),
 		serveStatic(response, cache, absPath);
 	});
 
-	server.listen(3000, function (){
+	server.listen(8080, function (){
 		console.log('Server listening on port 3000.');
 	});
