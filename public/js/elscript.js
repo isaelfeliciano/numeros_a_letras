@@ -2,7 +2,7 @@ $(document).on("ready", function(){
 	inicio();
 });	
 	function inicio(){
-		var socket = io.connect('http://localhost');
+		var socket = io.connect();
 		$('input[name="convertir"]').on("click", function(){
 			var salida_numero = "";
 			var entrada_numero = $('input[name="entrada_numero"]').val();
