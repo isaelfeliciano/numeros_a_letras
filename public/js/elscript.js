@@ -7,8 +7,7 @@ $(document).on("ready", function(){
 			var salida_numero = "";
 			var entrada_numero = $('input[name="entrada_numero"]').val();
 			if(/[a-zA-Z]/.test(entrada_numero)){
-				$('input[name="entrada_numero"]').val('');
-				$('input[name="entrada_numero"]').attr('placeholder', 'Solo numeros');
+				$('input[name="entrada_numero"]').val('').attr('placeholder', 'Solo numeros');
 			}else{
 				socket.emit('consulta', {dato: entrada_numero});
 				if($('input[name="salida_numero"]').val(salida_numero) !== ""){
@@ -21,3 +20,18 @@ $(document).on("ready", function(){
 			$('textarea[name="salida_numero"]').val(respuesta);
 		})
 	}
+
+$(document).on("ready", function(){
+	$(document).on('keypress', function(e){
+		console.log(e.keyCode);
+		if(e.keyCode == 13){
+			$('input[name="convertir"]').click();
+		}
+	});
+});
+
+$(document).on("ready", function(){
+	$("form").submit(function(){ 
+		return false; 
+	});
+});
