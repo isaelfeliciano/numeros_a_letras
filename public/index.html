@@ -4,10 +4,10 @@
 	<meta charset="utf-8" />
 	<link type="text/css" rel="stylesheet" href="estilo.css">
 	<link type="text/css" rel="stylesheet" href="estilo/darktooltip.css">
-	<script tyle="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/tooltip.js"></script>
-	<script type="text/javascript" src="js/elscript.js"></script>
-	<script type="text/javascript" src="socket.io/lib/socket.io.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/tooltip.js"></script>
+	<script src="js/elscript.js"></script>
+	<script src="socket.io/lib/socket.io.js"></script>
 	<script type="text/javascript">
 	$(document).on("ready", function(){
 		$('input[name="entrada_numero"]').tooltip({ position: 'center right'});
@@ -20,17 +20,16 @@
 <body>
 	<header><h1>APP LEER NÚMEROS</h1></header>
 	<section>
-		<!--<div></div>-->
-			<form id="formulario" action="#">
-				<p>
-					<label>Escribe un número </label>
-					<input  type="text" name="entrada_numero" class="campos" value="" pattern="[0-9]+" title="Solo Numeros" autofocus>
-				</p>
+		<form id="formulario" action="#">
+			<p>
+				<label>Escribe un número </label>
+				<input  type="text" name="entrada_numero" class="campos" value="" pattern="[0-9]+" title="Solo Numeros" autofocus>
+			</p>
 				<input type="button" name="convertir" value="Convertir" class="boton"><br>
-				<p>
-					<label>Número en letras &#160 </label><textarea class="campos" type="text" name="salida_numero" value="" title="Resultado"></textarea>
-				</p>
-			</form>
+			<p>
+				<label>Número en letras &#160 </label><textarea rows="6" cols="10" class="campos" type="text" name="salida_numero" value="" title="Resultado"></textarea>
+			</p>
+		</form>
 	</section>
 </body>
 </html>

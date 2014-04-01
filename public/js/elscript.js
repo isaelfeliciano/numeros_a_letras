@@ -6,13 +6,15 @@ $(document).on("ready", function(){
 		$('input[name="convertir"]').on("click", function(){
 			var salida_numero = "";
 			var entrada_numero = $('input[name="entrada_numero"]').val();
-			socket.emit('consulta', {dato: entrada_numero});
-			//var entrada_numero = $('input[name="entrada_numero"]').val();
-			//var salida_numero = leerNumeros(entrada_numero);
-			if($('input[name="salida_numero"]').val(salida_numero) !== ""){
-				$('textarea[name="salida_numero"]').val("");
+			if(/[a-zA-Z]/.test(entrada_numero)){
+				$('input[name="entrada_numero"]').val('');
+				$('input[name="entrada_numero"]').attr('placeholder', 'Solo numeros');
+			}else{
+				socket.emit('consulta', {dato: entrada_numero});
+				if($('input[name="salida_numero"]').val(salida_numero) !== ""){
+					$('textarea[name="salida_numero"]').val("");
+				}
 			}
-			//$('input[name="salida_numero"]').val(salida_numero);
 		});
 
 		socket.on('resp_consulta', function (respuesta){
