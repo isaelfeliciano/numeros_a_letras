@@ -1,7 +1,13 @@
-numeros_a_letras
+(NAL) Numeros a Letras
 ================
 
-Script hecho con Javascript que convierte numeros en sus respectivas denominaciones en letras
+Programado con Javascript que convierte numeros en sus respectivas denominaciones en letras.
+Comenzo como un proyecto para poner aprueba y en practica lo que habia aprendido de javascript,
+en el inicio solo la desarrolle para que funcionara en la consola pero luego decidi 
+proveerle una UI, y en la medida de lo posible la voy mejorando.
+
+Mi objetivo es sacarle mas provecho en una aplicacion que desarrollare en un futuro, pero cualquiera
+que lo desee puede utilizar el codigo libremente.
 
 #NAL
-NAL es la abreviatura de Numeros A Letras.
+NAL es la abreviatura para: Numeros A Letras.
