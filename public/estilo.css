@@ -1,10 +1,14 @@
-html, body{
+html{
 	width: 100%;
 	height: 100%;
 	padding: 0;
 	margin:0;
 }
 body{
+	padding: 0;
+	height: 100%;
+	margin:0;
+	width: 100%;
 	font-family:arial;
 	background-image: url(imagenes/science.png); 
 }
@@ -21,7 +25,7 @@ header{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0px;
-	background-image: url(imagenes/header_background2.jpg);
+	background-image: url(imagenes/header_bg.jpg);
 	/*background: #bf2626;
 	background: -moz-linear-gradient(top, #bf2626 0%, #d64228 50%, #c92e20 51%, #e5887b 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bf2626), color-stop(50%,#d64228), color-stop(51%,#c92e20), color-stop(100%,#e5887b));
@@ -31,8 +35,9 @@ header{
 	background: linear-gradient(to bottom, #bf2626 0%,#d64228 50%,#c92e20 51%,#e5887b 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf2626', endColorstr='#e5887b',GradientType=0 );*/ 
 }
-section{
-	position: relative;
+#window{
+	display: inline-table;
+	/*position: relative;*/
 	margin-top: 70px;
 	border-top: 40px solid;
 	border-color: #f85032;
@@ -77,6 +82,9 @@ section{
 	color: red;
 	font-size: 1.36em;
 }
+label{
+	vertical-align: top;
+}
 textarea{
 	height: 20%;
 }
@@ -105,4 +113,72 @@ textarea{
 .boton:hover{
 	background-color: white;
 	border: 3px solid #f02f17;
+}
+footer{
+	position: relative;
+	height: 172px;
+	margin-top: 20px;
+	bottom: 0;
+	/*padding: 30px 0px 0px;*/
+	/*text-align: center;*/
+	display: block;
+	background-image: url(imagenes/footer_bg.png);
+	background-repeat: repeat-x;
+	
+}
+section#lateral{
+	width: 20%;
+	padding: 80px 20px;
+	margin-right: 50px;
+	margin-top: 1px;
+	border-right: 3px solid white;
+	background-color: #2B2B2B;
+	height: 100%;
+	display: inline-table;
+
+}
+section#lateral h4{
+	/*border: medium none;*/
+	border-radius: 5px;
+	color: white;
+	padding: 0px 8px;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: #191919;
+	white-space: nowrap;
+	font-weight: normal;
+}
+h4{
+	font-size: 1.4em;
+	margin: 0px 0px 1em;
+	padding: 1em 0px 0px;
+	text-align: left;
+	border: 0px none;
+	letter-spacing: 0px;
+	background: none repeat scroll 0% 0% transparent;
+	/*clear: left;*/
+	font-family: 'Open Sans Condensed','Arial','Sans-Serif';
+	font-weight: bold;
+}
+section#lateral p{
+	margin: 1px;
+	color: white;
+}
+div.section{
+	/*padding-top: 50px;*/
+	width: 300px;
+	margin: 0px 20px;
+	text-align: left;
+	display: inline;
+}
+
+a, a:visited, a:link{
+	text-decoration: underline;
+	color: #a90329;
+}
+a:hover{
+	color: white;
+}
+span{
+	color: #a90329;
 }

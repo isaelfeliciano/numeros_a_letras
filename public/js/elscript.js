@@ -22,10 +22,21 @@ $(document).on("ready", function(){
 	}
 
 $(document).on("ready", function(){
+	var i = 0;
 	$(document).on('keypress', function(e){
 		console.log(e.keyCode);
 		if(e.keyCode == 13){
 			$('input[name="convertir"]').click();
+			i = 0;
+		}
+		
+		if(e.keyCode == 46){
+			i++;
+			$('input[name="entrada_numero"]').val('');
+		}
+		if (i == 2){
+			$('textarea[name="salida_numero"]').val("");
+			i = 0;
 		}
 	});
 });
