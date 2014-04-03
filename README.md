@@ -9,5 +9,4 @@ proveerle una UI, y en la medida de lo posible la voy mejorando.
 Mi objetivo es sacarle mas provecho en una aplicacion que desarrollare en un futuro, pero cualquiera
 que lo desee puede utilizar el codigo libremente.
 
-#NAL
-NAL es la abreviatura para: Numeros A Letras.
+###Autor: Isael Feliciano @R13Isael
