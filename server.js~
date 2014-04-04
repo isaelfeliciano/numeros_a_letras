@@ -25,14 +25,14 @@ var http = require('http'),
 				if(exists){
 					fs.readFile(absPath, function (err, data){
 						if(err){
-							//envia404(respuesta);
+							envia404(respuesta);
 						} else{
 							cache[absPath] = data;
 							enviaFile(respuesta, absPath, data);
 						}
 					});
 				} else{
-					//envia404(respuesta);
+					envia404(respuesta);
 				}
 			});
 		}
@@ -50,7 +50,7 @@ var http = require('http'),
 		serveStatic(respuesta, cache, absPath);
 	});
 
-	var port = Number(process.env.PORT || 5000)
+	var port = Number(process.env.PORT || 5001)
 	server.listen(port, function (){
 		console.log('Servidor escuchando en puerto: '+port);
 	});

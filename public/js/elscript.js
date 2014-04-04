@@ -4,16 +4,19 @@ $(document).on("ready", function(){
 	function inicio(){
 		var socket = io.connect();
 		$('input[name="convertir"]').on("click", function(){
-			var salida_numero = "";
-			var entrada_numero = $('input[name="entrada_numero"]').val();
-			if(/[a-zA-Z]/.test(entrada_numero)){
-				$('input[name="entrada_numero"]').val('').attr('placeholder', 'Solo numeros');
-			}else{
-				socket.emit('consulta', {dato: entrada_numero});
-				if($('input[name="salida_numero"]').val(salida_numero) !== ""){
-					$('textarea[name="salida_numero"]').val("");
+			$(this).trigger("comparar");
+			$(document).on('enviar', function(){
+				var salida_numero = "";
+				var entrada_numero = $('input[name="entrada_numero"]').val();
+				if(/[a-zA-Z]/.test(entrada_numero)){
+					$('input[name="entrada_numero"]').val('').attr('placeholder', 'Solo numeros');
+				}else{
+					socket.emit('consulta', {dato: entrada_numero});
+					if($('input[name="salida_numero"]').val(salida_numero) !== ""){
+						$('textarea[name="salida_numero"]').val("");
+					}
 				}
-			}
+			});
 		});
 
 		socket.on('resp_consulta', function (respuesta){
@@ -45,4 +48,13 @@ $(document).on("ready", function(){
 	$("form").submit(function(){ 
 		return false; 
 	});
+});
+
+$(document).on("comparar", function(){
+	if ($('input:first').val().length > 15){
+		alert('Por ahora solo podemos contar hasta 15 digitos, \n estamos trabajando para mejorarlo.');
+	}else{
+		$(this).trigger('enviar');
+	}
+
 });

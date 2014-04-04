@@ -131,6 +131,9 @@ section#lateral{
 	padding: 80px 20px;
 	margin-right: 50px;
 	margin-top: 1px;
+	-webkit-box-shadow: 3px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    5px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         5px 0px 5px 0px rgba(50, 50, 50, 0.75);
 	border-right: 3px solid white;
 	background-color: #2B2B2B;
 	height: 100%;
