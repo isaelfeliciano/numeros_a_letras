@@ -1,27 +1,12 @@
+var valor1;
+var valor2 = 0;
 $(document).on("ready", function(){
 	inicio();
 });	
 	function inicio(){
-		var socket = io.connect();
 		$('input[name="convertir"]').on("click", function(){
-			$(this).trigger("comparar");
-			$(document).on('enviar', function(){
-				var salida_numero = "";
-				var entrada_numero = $('input[name="entrada_numero"]').val();
-				if(/[a-zA-Z]/.test(entrada_numero)){
-					$('input[name="entrada_numero"]').val('').attr('placeholder', 'Solo numeros');
-				}else{
-					socket.emit('consulta', {dato: entrada_numero});
-					if($('input[name="salida_numero"]').val(salida_numero) !== ""){
-						$('textarea[name="salida_numero"]').val("");
-					}
-				}
-			});
+			$(this).trigger("comparar");	
 		});
-
-		socket.on('resp_consulta', function (respuesta){
-			$('textarea[name="salida_numero"]').val(respuesta);
-		})
 	}
 
 $(document).on("ready", function(){
@@ -31,8 +16,7 @@ $(document).on("ready", function(){
 		if(e.keyCode == 13){
 			$('input[name="convertir"]').click();
 			i = 0;
-		}
-		
+		}		
 		if(e.keyCode == 46){
 			i++;
 			$('input[name="entrada_numero"]').val('');
@@ -44,17 +28,52 @@ $(document).on("ready", function(){
 	});
 });
 
+$(document).on("comparar", function(){
+	valor1 = $('input:first').val();
+	if (valor1 == valor2){
+		console.log('Misma consulta');
+	}else{
+		if ($('input:first').val().length > 15){
+			alert('Por ahora solo podemos contar hasta 15 digitos, \n estamos trabajando para mejorarlo.');
+		}else{
+			$(this).trigger('enviar');
+		}
+	}
+	valor2 = $('input:first').val();
+});
+
+$(document).on('enviar', function(){
+	var socket = io.connect();
+	var salida_numero = "";
+	var entrada_numero = $('input[name="entrada_numero"]').val();
+	var n1 = $('input:first').val();
+	var ceros = 0;
+	var s_cero = "";
+	for(var i=0;n1[i] == 0;i++){
+		if(n1[i] == 0){
+			ceros += 1;
+			s_cero += "cero ";
+		}
+	}
+
+	if(/[a-zA-Z]/.test(entrada_numero)){
+		$('input[name="entrada_numero"]').val('').attr('placeholder', 'Solo numeros');
+	}else{
+		entrada_numero = parseInt(String(entrada_numero).substring(ceros))
+		socket.emit('consulta', {dato: entrada_numero});
+		if($('input[name="salida_numero"]').val(salida_numero) !== ""){
+			$('textarea[name="salida_numero"]').val("");
+		}
+	}
+	socket.on('resp_consulta', function (respuesta){
+			$('textarea[name="salida_numero"]').val(s_cero + respuesta);
+		})
+});
+
+
 $(document).on("ready", function(){
 	$("form").submit(function(){ 
 		return false; 
 	});
 });
 
-$(document).on("comparar", function(){
-	if ($('input:first').val().length > 15){
-		alert('Por ahora solo podemos contar hasta 15 digitos, \n estamos trabajando para mejorarlo.');
-	}else{
-		$(this).trigger('enviar');
-	}
-
-});

@@ -36,8 +36,8 @@ header{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf2626', endColorstr='#e5887b',GradientType=0 );*/ 
 }
 #window{
-	display: inline-table;
-	/*position: relative;*/
+	/*display: inline-table;*/
+	position: relative;
 	margin-top: 70px;
 	border-top: 40px solid;
 	border-color: #f85032;
@@ -127,6 +127,9 @@ footer{
 	
 }
 section#lateral{
+    top: 0;
+    position: fixed;
+    z-index:-1;
 	width: 20%;
 	padding: 80px 20px;
 	margin-right: 50px;
