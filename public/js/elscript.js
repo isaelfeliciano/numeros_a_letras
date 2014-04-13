@@ -1,5 +1,7 @@
 var valor1;
 var valor2 = 0;
+var $in = $('input[name="entrada_numero"]');
+var $out = $('textarea[name="salida_numero"]');
 $(document).on("ready", function(){
 	inicio();
 });	
@@ -19,10 +21,10 @@ $(document).on("ready", function(){
 		}		
 		if(e.keyCode == 46){
 			i++;
-			$('input[name="entrada_numero"]').val('');
+			$in.val('');
 		}
 		if (i == 2){
-			$('textarea[name="salida_numero"]').val("");
+			$out.val("");
 			i = 0;
 		}
 	});
@@ -34,7 +36,8 @@ $(document).on("comparar", function(){
 		console.log('Misma consulta');
 	}else{
 		if ($('input:first').val().length > 15){
-			alert('Por ahora solo podemos contar hasta 15 digitos, \n estamos trabajando para mejorarlo.');
+			$(this).trigger('enviar');
+			//alert('Por ahora solo podemos contar hasta 15 digitos, \n estamos trabajando para mejorarlo.');
 		}else{
 			$(this).trigger('enviar');
 		}
@@ -45,7 +48,7 @@ $(document).on("comparar", function(){
 $(document).on('enviar', function(){
 	var socket = io.connect();
 	var salida_numero = "";
-	var entrada_numero = $('input[name="entrada_numero"]').val();
+	var entrada_numero = $in.val();
 	var n1 = $('input:first').val();
 	var ceros = 0;
 	var s_cero = "";
@@ -57,16 +60,17 @@ $(document).on('enviar', function(){
 	}
 
 	if(/[a-zA-Z]/.test(entrada_numero)){
-		$('input[name="entrada_numero"]').val('').attr('placeholder', 'Solo numeros');
+		$in.val('').attr('placeholder', 'Solo numeros');
 	}else{
-		entrada_numero = parseInt(String(entrada_numero).substring(ceros))
+		entrada_numero = String(entrada_numero).substring(ceros);
+		console.log(typeof(entrada_numero));
 		socket.emit('consulta', {dato: entrada_numero});
 		if($('input[name="salida_numero"]').val(salida_numero) !== ""){
-			$('textarea[name="salida_numero"]').val("");
+			$out.val("");
 		}
 	}
 	socket.on('resp_consulta', function (respuesta){
-			$('textarea[name="salida_numero"]').val(s_cero + respuesta);
+			$out.val(s_cero + respuesta);
 		})
 });
 
